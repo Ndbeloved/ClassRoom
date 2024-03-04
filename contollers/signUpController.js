@@ -8,7 +8,6 @@ const signUp = async function(req, res){
         const hashedPassword = await userPassword.hash(password)
         const newUser = new User()
         const result = await newUser.createNew(email, username, hashedPassword.hash, hashedPassword.salt)
-        console.log(result)
         if(!result) return res.status(403).json({message: "unsuccessful", status: 403})
         res.status(200).json({message: "successful", status :200})
     }
@@ -18,7 +17,15 @@ const signUp = async function(req, res){
 }
 
 const login = async function(req, res){
-    const {email, password, username} = req.body
+    const {email, password} = req.body
+    const userObj = new User()
+    const user = await userObj.isUser(email)
+    if(!user) return res.status(403).json({message: "incorrect email or password", status: 403})
+    const passwordObj = new Password()
+    const hashedPassword = await passwordObj.decrypt(user.salt, password, user.password)
+    console.log(hashedPassword)
+    if(!hashedPassword) return res.status(403).json({message: "incorrect email or password", status: 403})
+    res.status(200).json({message: "success", status: 200})
 }
 
 

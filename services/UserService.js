@@ -28,8 +28,13 @@ class User{
     }
 
     //logs a user in
-    async isUser(email, password){
-        await UserModel.findOne({email})
+    async isUser(email){
+        try{
+            return await UserModel.findOne({email})
+        }
+        catch(err){
+            return false
+        }
     }
 }
 

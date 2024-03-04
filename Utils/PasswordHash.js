@@ -11,8 +11,10 @@ class Password{
         return {hash, salt}
     }
 
-    async decrypt(salt){
-        
+    async decrypt(salt, password, original){
+        const hash = crypto.createHash('sha256').update(salt + password).digest('hex')
+        if(hash != original) return false
+        return true
     }
 }
 
