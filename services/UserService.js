@@ -7,17 +7,29 @@ class User{
     }
 
     //create new user
-    async createNew(email, username, password){
-        UserModel.create({
-            email,
-            username,
-            password,
-        })
+    async createNew(email, username, password, salt){
+        try{
+            await UserModel.create({
+                email,
+                username,
+                password,
+                salt
+            })
+            return true
+        }catch(err){
+            console.log(err)
+            return false
+        }
     }
 
     //drop a user from the database
-    delete(email){
-        UserModel.findOneAndDelete({email})
+    async delete(email){
+        await UserModel.findOneAndDelete({email})
+    }
+
+    //logs a user in
+    async isUser(email, password){
+        await UserModel.findOne({email})
     }
 }
 
