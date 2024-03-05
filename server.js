@@ -5,9 +5,11 @@ const app = express()
 const dbConnect = require('./services/dbConnectService')
 
 const signUpRoute = require('./routes/signUpRoute')
+const paymentRoute = require('./routes/paymentRoute')
 
 app.use(express.json())
 app.use('/auth', signUpRoute)
+app.use('/paystack', paymentRoute)
 
 //handles connection to db and spinning up server
 dbConnect(app)

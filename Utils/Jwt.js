@@ -14,7 +14,7 @@ class Jwt{
                 balance,
                 department,
             }
-            const secret = process.env.SECRET_KEY
+            const secret = process.env.SECRET_KEY_JWT
             const option = {
                 expiresIn: '24hr',
             }
@@ -27,7 +27,7 @@ class Jwt{
 
     verify(token){
         try{
-            const decodedJWT = jwt.decode(token, process.env.SECRET_KEY)
+            const decodedJWT = jwt.decode(token, process.env.SECRET_KEY_JWT)
             return decodedJWT
         }
         catch(err){
