@@ -12,7 +12,11 @@ const makePayment = async function(req, res){
 const confirmPayment = async function(req, res){
     const {reference} = req.params
     const transactionData = await initializePayment.verifyPayment(reference)
-    console.log(transactionData)
+    const responseJson = JSON.parse(transactionData)
+    const receiverID = responseJson.data.metadata.custom_fields[0].receiver
+    const amountPaid = responseJson.data.amount / 100
+    console.log('amount: ',amountPaid)
+    console.log('receiverId: ',receiverID)
     res.status(200).json({message: "success"})
 }
 

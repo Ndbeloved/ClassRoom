@@ -9,7 +9,13 @@ const payStack = {
           const params = JSON.stringify({
             "email": email,
             "amount": amount * 100,  //amount in NGN
-            "redirect_url": "http://localhost:3000/paystack/auth/verify"
+            "metadata": {
+              "custom_fields": [
+                {
+                  "receiver": "Gozie322555"
+                }
+              ]
+            }
           });
     
           const options = {

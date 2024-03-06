@@ -9,7 +9,8 @@ const DeptSchema = mongoose.Schema({
         type: String,
         required: true,
         unique: true
-    }
+    },
+    listed: [String]
 })
 
 
