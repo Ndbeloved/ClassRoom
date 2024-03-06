@@ -10,6 +10,10 @@ const DeptSchema = mongoose.Schema({
         required: true,
         unique: true
     },
+    courseRepID:{
+        type: String,
+        required: true
+    },
     listed: [String]
 })
 

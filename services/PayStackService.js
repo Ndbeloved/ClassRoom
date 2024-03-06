@@ -3,7 +3,7 @@ const https = require('https')
 
 const payStack = {
 
-    acceptPayment: async(req, res, amount, email) => {
+    acceptPayment: async(req, res, amount, email, BookID, DeptID) => {
       return new Promise((resolve, reject) => {
         try {
           const params = JSON.stringify({
@@ -12,7 +12,8 @@ const payStack = {
             "metadata": {
               "custom_fields": [
                 {
-                  "receiver": "Gozie322555"
+                  "item": BookID,
+                  "department": DeptID
                 }
               ]
             }

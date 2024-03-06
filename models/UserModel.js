@@ -22,7 +22,6 @@ const userSchema = mongoose.Schema({
     balance: {
         type: Number,
         default: 0,
-        immutable: true,
     },
     salt: {
         type: String,
