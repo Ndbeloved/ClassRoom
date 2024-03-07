@@ -5,6 +5,14 @@ const TransactionsSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    senderID:{
+        type: String,
+        required: true,
+    },
+    BookID:{
+        type: String,
+        required: true
+    },
     amount: {
         type: String,
         required: true,

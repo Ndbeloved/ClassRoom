@@ -16,7 +16,8 @@ const BookSchema = mongoose.Schema({
     deptID: {
         type: String,
         required: true
-    }
+    },
+    paidID: [String]
 })
 
 module.exports = new mongoose.model('books', BookSchema)

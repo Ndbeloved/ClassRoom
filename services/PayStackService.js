@@ -3,7 +3,7 @@ const https = require('https')
 
 const payStack = {
 
-    acceptPayment: async(req, res, amount, email, BookID, DeptID) => {
+    acceptPayment: async(req, res, amount, email, BookID, DeptID, SenderID) => {
       return new Promise((resolve, reject) => {
         try {
           const params = JSON.stringify({
@@ -13,7 +13,8 @@ const payStack = {
               "custom_fields": [
                 {
                   "item": BookID,
-                  "department": DeptID
+                  "department": DeptID,
+                  "sender": SenderID,
                 }
               ]
             }

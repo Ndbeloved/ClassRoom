@@ -30,6 +30,16 @@ const userSchema = mongoose.Schema({
     department: {
         type: String,
         required: true
+    },
+    school: {
+        type: String,
+        required: true,
+    },
+    booksReceived: [String],    //keeps track of books yet to be received 
+    isSuperUser:{
+        type: Boolean,
+        default: false,
+        immutable: true,
     }
 })
 
